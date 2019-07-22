@@ -22,5 +22,10 @@ for x in listOfVideoPaths:
 
 random.shuffle(unattachedVideos)
 
-finalVideo = concatenate_videoclips(unattachedVideos)
-finalVideo.write_videofile("export.mp4", audio="music.mp4")
+finalVideo = concatenate_videoclips(unattachedVideos[:49])
+audio = AudioFileClip("music.m4a")
+shortAudio = audio.set_duration(finalVideo.duration)
+finalVideo = finalVideo.set_audio(shortAudio)
+print(finalVideo.duration)
+print(shortAudio.duration)
+finalVideo.write_videofile("export.avi",fps=24,codec='libx264')
