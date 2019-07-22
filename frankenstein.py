@@ -1,11 +1,9 @@
 from moviepy.editor import *
 
-
 def get_file_paths(folder_path):
     file_name_list = os.listdir(folder_path)
 
     path_name_list = []
-    final_name_list = []
     for name in file_name_list:
         if name == ".DS_Store":
             pass
@@ -13,7 +11,13 @@ def get_file_paths(folder_path):
             path_name_list.append(folder_path + "/"+ name)
     return path_name_list
 
-listOfVideos = get_file_paths("/Users/v_yumatthew/frankenstein/files")
+listOfVideoPaths = get_file_paths("/Users/v_yumatthew/frankenstein/files")
+unattachedVideos = []
 
-print(listOfVideos)
+for x in listOfVideoPaths: 
+    myClip = VideoFileClip(x)
+    unattachedVideos.append(myClip)
 
+
+finalVideo = concatenate_videoclips(unattachedVideos)
+finalVideo.write_videofile("export.mp4")
