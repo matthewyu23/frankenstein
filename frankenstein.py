@@ -12,7 +12,7 @@ def get_file_paths(folder_path):
             path_name_list.append(folder_path + "/"+ name)
     return path_name_list
 
-listOfVideoPaths = get_file_paths("/Users/v_yumatthew/frankenstein/files")
+listOfVideoPaths = get_file_paths("./files")
 unattachedVideos = []
 
 for x in listOfVideoPaths: 
